@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.daniel.springcloud.msvc.items.application.utils.ResponseGenericObject;
@@ -14,9 +15,10 @@ import com.daniel.springcloud.msvc.items.infrastructure.clients.ProductFeignClie
 
 import lombok.RequiredArgsConstructor;
 
+@Primary
 @Service
 @RequiredArgsConstructor
-public class ItemApplicationService implements ItemUseCase{
+public class ItemFeignApplicationService implements ItemUseCase{
 
     private final ProductFeignClient client;
 
@@ -71,20 +73,20 @@ public class ItemApplicationService implements ItemUseCase{
     public ResponseGenericObject<Optional<Item>> findById(long id) {
         try{
             product = client.getProductById(id).getBody();
-            if(product == null){
+            if(product == null  ){
                 return new ResponseGenericObject<>(
                     false,
                     NOT_FOUND_ITEM,
                     null
                 );                
             }
-            if(product.getId() == null){
+            if(product.getId() == null ){
                 return new ResponseGenericObject<>(
                     false,
                     NOT_FOUND_ITEM,
                     null
                 );                
-            }            
+            }
             return new ResponseGenericObject<>(
                 true,
                 FOUND_ITEM,
