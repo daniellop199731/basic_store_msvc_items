@@ -6,12 +6,13 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daniel.springcloud.msvc.items.domain.model.Product;
 
 //Interface que usa FeignClient para comunicarce con otro microservicio ubicado en la propiedad url 
 //y de nombre msvc-products (propiedad que se ubica en el archivo application.properties, spring.application.name)
-@FeignClient(url = "localhost:8081/api/products", name = "msvc-products")
+@FeignClient(name = "msvc-products", path = "/api/products")
 public interface ProductFeignClient {
 
     @GetMapping("")
