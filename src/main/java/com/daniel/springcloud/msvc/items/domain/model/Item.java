@@ -13,7 +13,12 @@ public class Item {
     private Integer quantity;
 
     public Double getTotal(){
-        return product.getPrice() * quantity;
+        try{
+            return product.getPrice() * quantity;
+        } catch (Exception ex){
+            return 0.0;
+        }
+        
     }
     
 }
