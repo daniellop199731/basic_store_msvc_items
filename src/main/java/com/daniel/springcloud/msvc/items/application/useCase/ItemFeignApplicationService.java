@@ -15,7 +15,6 @@ import com.daniel.springcloud.msvc.items.infrastructure.clients.ProductFeignClie
 
 import lombok.RequiredArgsConstructor;
 
-@Primary
 @Service
 @RequiredArgsConstructor
 public class ItemFeignApplicationService implements ItemUseCase{
