@@ -41,6 +41,7 @@ public class ItemWebClientService implements ItemUseCase {
     public ResponseGenericObject<List<Item>> findAll() {
         items = this.client.build()
         .get()
+        .uri("/api/products")
         .accept(MediaType.APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Product.class)
@@ -79,7 +80,7 @@ public class ItemWebClientService implements ItemUseCase {
             item = Optional.ofNullable(
                 this.client.build()
                 .get()
-                .uri("/{id}", params)
+                .uri("/api/products/{id}", params)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Product.class)
