@@ -33,7 +33,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.springframework.cloud:spring-cloud-starter'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	/*Se comenta esta linea ya que el proyecto al ser cliente de Eureka, se maneja el balanceo 
+	de cargas de manera automatica*/
+	//implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+    // Dependencia del cliente Eureka
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
